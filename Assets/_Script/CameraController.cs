@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         rotX += Input.GetAxis("Mouse Y");
         rotX = Mathf.Clamp(rotX, minVarAngle, maxVarAngle);
         rotY += Input.GetAxis("Mouse X");
@@ -49,10 +49,13 @@ public class CameraController : MonoBehaviour
 
         if (isThirdPersonActive)
         {
+        
             thirdPerson();
         }
         else
         {
+           
+            
             firstPerson();
         }
 
