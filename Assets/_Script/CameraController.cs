@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController instance;
 
     public Transform player;
     public float gap = 2f;
@@ -15,12 +16,25 @@ public class CameraController : MonoBehaviour
     public float minVarAngle = -45f;
     public float maxVarAngle =  45f;
 
+    public bool isThirdPersonActive;
 
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+        isThirdPersonActive = true;
     }
 
     // Update is called once per frame
@@ -31,13 +45,21 @@ public class CameraController : MonoBehaviour
         rotX = Mathf.Clamp(rotX, minVarAngle, maxVarAngle);
         rotY += Input.GetAxis("Mouse X");
 
-        firstPersonCamera();
 
+
+        if (isThirdPersonActive)
+        {
+            thirdPerson();
+        }
+        else
+        {
+            firstPerson();
+        }
 
     }
 
 
-    public void thirdpersonCamera()
+    public void thirdPerson()
     {
         var targetRotation = Quaternion.Euler(rotX, rotY, 0);
         
@@ -47,14 +69,15 @@ public class CameraController : MonoBehaviour
         transform.rotation = targetRotation;
     }
 
-    public void firstPersonCamera()
+    public void firstPerson()
     {
         var targetRotation = Quaternion.Euler(rotX, rotY, 0);
-        
-        Vector3 playerPosition = player.position;
-        Vector3 cameraPosition = transform.position;
 
-        transform.position = playerPosition - targetRotation * new Vector3(0f, 0f, gap);
+        Vector3 playerPosition = player.position;
+
+        transform.position = playerPosition - targetRotation * new Vector3(0f, 0f, 0f);
         transform.rotation = targetRotation;
+
+        player.rotation = targetRotation;
     }
 }
