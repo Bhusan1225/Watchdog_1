@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     public GameObject cameraViewUI;
 
+    public CameraController Camera;
     public Button firstPersonViewButton;
     public Button thirdPersonViewButton;
 
@@ -52,13 +53,13 @@ public class UIManager : MonoBehaviour
 
     void firstPersonViewButtonClicked()
     {
-        CameraController.instance.isThirdPersonActive = false;
+        Camera.isThirdPersonActive = false;
     }
 
 
     void thirdPersonViewButtonClicked() 
     {
-        CameraController.instance.isThirdPersonActive = true;
+        Camera.isThirdPersonActive = true;
     }
 
 }

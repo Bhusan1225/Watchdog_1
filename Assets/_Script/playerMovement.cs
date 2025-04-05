@@ -7,7 +7,7 @@ public class playerMovement : MonoBehaviour
     public float speed = 3f;
 
     private float moveX;
-    private float moveY;
+    private float moveZ;
 
 
 
@@ -20,19 +20,26 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        PlayerMovement();
+
+
+    }
+
+    void PlayerMovement()
+    {
         // will give direction
         moveX = Input.GetAxisRaw("Horizontal");
-        moveY = Input.GetAxisRaw("Vertical");
+        moveZ = Input.GetAxisRaw("Vertical");
 
         //combine this above 2 direction
-        Vector3 move  = transform.right * moveX + transform.forward * moveY;
+        var movementInput = (new Vector3(moveX, 0, moveZ)).normalized;
 
-        transform.position += move * speed * Time.deltaTime;
+        float movementAmout = Mathf.Abs(moveX)  + Mathf.Abs(moveZ);
 
-
-
-        //transform.position += 
-
-        
+        if (movementAmout > 0)
+        {
+            transform.position += movementInput * speed * Time.deltaTime;
+            transform.rotation = Quaternion.LookRotation(movementInput);
+        }
     }
 }

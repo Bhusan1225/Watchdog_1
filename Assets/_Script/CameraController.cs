@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public static CameraController instance;
+    //public static CameraController instance;
 
     public Transform player;
     public float gap = 2f;
@@ -18,17 +18,17 @@ public class CameraController : MonoBehaviour
 
     public bool isThirdPersonActive;
 
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    //void Awake()
+    //{
+    //    if (instance == null)
+    //    {
+    //        instance = this;
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
     // Start is called before the first frame update
     void Start()
     {
