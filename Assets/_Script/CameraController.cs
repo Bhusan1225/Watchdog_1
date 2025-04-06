@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
 {
     //public static CameraController instance;
 
-    public Transform player;
+    public Transform target;
     public float gap = 2f;
 
     float rotX;
@@ -66,9 +66,9 @@ public class CameraController : MonoBehaviour
     {
         var targetRotation = Quaternion.Euler(rotX, rotY, 0);
         
-        Vector3 playerPosition = player.position;
+        //Vector3 targetPosition = target.position;
 
-        transform.position = playerPosition - targetRotation * new Vector3(0f, 0f, gap);
+        transform.position = target.position - targetRotation * new Vector3(0f, 0f, gap);
         transform.rotation = targetRotation;
     }
 
@@ -76,11 +76,13 @@ public class CameraController : MonoBehaviour
     {
         var targetRotation = Quaternion.Euler(rotX, rotY, 0);
 
-        Vector3 playerPosition = player.position;
+        Vector3 targetPosition = target.position;
 
-        transform.position = playerPosition - targetRotation * new Vector3(0f, -1.4f, 0f);
+        transform.position = targetPosition - targetRotation * new Vector3(0f, -1.4f, 0f);
         transform.rotation = targetRotation;
 
-        player.rotation = targetRotation;
+        target.rotation = targetRotation;
     }
+
+    public Quaternion flatRoation => Quaternion.Euler(0, rotY, 0);
 }

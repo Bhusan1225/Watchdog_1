@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isThirdPersonActive;
 
+    public CameraController camera;
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,16 +40,17 @@ public class PlayerMovement : MonoBehaviour
         // will give direction
         moveX = Input.GetAxisRaw("Horizontal");
         moveZ = Input.GetAxisRaw("Vertical");
-        //check if the player is moving
+        //check if the target is moving
         float movementAmout = Mathf.Abs(moveX) + Mathf.Abs(moveZ);
 
         //combine this above 2 direction
         var movementInput = (new Vector3(moveX, 0, moveZ)).normalized;
+        var movementDirection = camera.flatRoation * movementInput;
 
         if (movementAmout > 0)
         {
-            transform.position += movementInput * speed * Time.deltaTime;
-            transform.rotation = Quaternion.LookRotation(movementInput);
+            transform.position += movementDirection * speed * Time.deltaTime;
+            transform.rotation = Quaternion.LookRotation(movementDirection);
         }
     }
     void FirstPersonMovement()
@@ -58,11 +61,6 @@ public class PlayerMovement : MonoBehaviour
         
         //combine this above 2 direction
         Vector3 move = transform.forward * moveZ + transform.right * moveX;
-       
-        
-       
-
-    
         transform.position += move * speed * Time.deltaTime;
         
     }
