@@ -4,39 +4,47 @@ using UnityEngine;
 
 public class PlayerRayInteractor : MonoBehaviour
 {
+    static PlayerRayInteractor instance;
+
     public Camera camera;
+    public  HackableObject hackableObject = null;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // Get the center of the screen in viewport space (0,0 is bottom-left, 1,1 is top-right)
-        Vector3 screenCenter = new Vector3(0.5f, 0.5f, 0f);
-
-        // Convert to a world-space ray
-        Ray ray = camera.ViewportPointToRay(screenCenter);
-
-
-        // Perform the raycast and check if it hits something
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+        if (instance != null && instance != this)
         {
-            if (hit.rigidbody != null && hit.transform.CompareTag("Hackable"))
-            {
-                Debug.DrawRay(ray.origin, ray.direction * 200f, Color.green); // Green for "Hackable" objects
-            }
-            else
-            {
-                Debug.DrawRay(ray.origin, ray.direction * 200f, Color.yellow); // Yellow for non-Hackable hits
-            }
+            Destroy(gameObject);
         }
         else
         {
-            Debug.DrawRay(ray.origin, ray.direction * 200f, Color.red); // Red if nothing is hit
+            instance = this;
         }
     }
+
+    void Update()
+    {
+        Vector3 screenCenter = new Vector3(0.5f, 0.5f, 0f);
+        Ray ray = camera.ViewportPointToRay(screenCenter);
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            GameObject hitObject = hit.transform.gameObject;
+
+            // Check if object is "Hackable"
+            if (hitObject.GetComponent<HackableObject>())
+            {
+                hackableObject = hitObject.GetComponent<HackableObject>();
+                hackableObject.GetComponent<Outline>().enabled = true;
+            }
+            else
+            {
+                if (hackableObject)
+                {
+                    hackableObject.GetComponent<Outline>().enabled = false;
+                }
+            }
+        }
+       
+    }
 }
+

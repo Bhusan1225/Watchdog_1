@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
 
     public static UIManager Instance;
     public GameObject cameraViewUI;
+    public GameObject dotPanel;
 
     public CameraController camera;
    
@@ -31,7 +32,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         cameraViewUI.SetActive(false);
-        
+        dotPanel.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -55,6 +57,7 @@ public class UIManager : MonoBehaviour
     void firstPersonViewButtonClicked()
     {
         camera.isThirdPersonActive = false;
+        dotPanel.SetActive(true);
        
     }
 
@@ -62,7 +65,7 @@ public class UIManager : MonoBehaviour
     void thirdPersonViewButtonClicked() 
     {
         camera.isThirdPersonActive = true;
-       
+        dotPanel.SetActive(false);
     }
 
 }
