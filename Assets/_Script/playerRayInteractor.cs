@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerRayInteractor : MonoBehaviour
+public class PlayerRayInteractor : MonoBehaviour
 {
     public Camera camera;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -20,7 +20,7 @@ public class playerRayInteractor : MonoBehaviour
 
         // Convert to a world-space ray
         Ray ray = camera.ViewportPointToRay(screenCenter);
-      
+
 
         // Perform the raycast and check if it hits something
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
