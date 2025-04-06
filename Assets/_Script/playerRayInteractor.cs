@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerRayInteractor : MonoBehaviour
 {
-    static PlayerRayInteractor instance;
+    public static PlayerRayInteractor instance;
 
     public Camera camera;
     public  HackableObject hackableObject = null;
@@ -35,6 +35,11 @@ public class PlayerRayInteractor : MonoBehaviour
             {
                 hackableObject = hitObject.GetComponent<HackableObject>();
                 hackableObject.GetComponent<Outline>().enabled = true;
+                if(Input.GetKeyDown(KeyCode.H))
+                {
+                    hackableObject.hack();
+                }
+                
             }
             else
             {
