@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    //public static CameraController instance;
+   
 
     public Transform target;
     public float gap = 2f;
@@ -18,18 +18,7 @@ public class CameraController : MonoBehaviour
 
     public bool isThirdPersonActive;
 
-    //void Awake()
-    //{
-    //    if (instance == null)
-    //    {
-    //        instance = this;
-    //    }
-    //    else
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
-    // Start is called before the first frame update
+
     void Start()
     {
         //Cursor.lockState = CursorLockMode.Locked;
@@ -66,8 +55,6 @@ public class CameraController : MonoBehaviour
     {
         var targetRotation = Quaternion.Euler(rotX, rotY, 0);
         
-        //Vector3 targetPosition = target.position;
-
         transform.position = target.position - targetRotation * new Vector3(0f, 0f, gap);
         transform.rotation = targetRotation;
     }

@@ -7,43 +7,54 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 3f;
     public float moveX;
     public float moveZ;
-
-    public bool isThirdPersonActive;
+   
     public CameraController camera;
-
     public float rotSpeed = 600f;
-
     Quaternion requiredRotation;
 
+    public Animator dogAnimator;
+    public Animator playerAnimator;
+    //grounded
+    bool isGrounded;
+    public Transform groundCheck;
+    public float groundDistance;
+    public LayerMask groundMask;
+    Vector3 velocity;
+    float gravity = -9.8f ; 
+
+    public enum characterType
+    {
+        Player,
+        Dog
+    }
+
+    public characterType characters;
 
     // Start is called before the first frame update
     void Start()
     {
-        isThirdPersonActive = true;
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isThirdPersonActive)
-        {
-            ThridPersonMovement();
-        }
-        else
-        {
-            FirstPersonMovement();
-        }
-        
+        //ground check
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-    }
+        //resetting the default velocity
+        if (isGrounded && velocity.y < 0f)
+        {
+            velocity.y = -5f;
+        }
+       
 
-    void ThridPersonMovement()
-    {
         // will give direction
         moveX = Input.GetAxisRaw("Horizontal");
         moveZ = Input.GetAxisRaw("Vertical");
         //check if the target is moving
-        float movementAmout = Mathf.Abs(moveX) + Mathf.Abs(moveZ);
+        float movementAmout = Mathf.Clamp01(Mathf.Abs(moveX) + Mathf.Abs(moveZ));
 
         //combine this above 2 direction
         var movementInput = (new Vector3(moveX, 0, moveZ)).normalized;
@@ -55,19 +66,22 @@ public class PlayerMovement : MonoBehaviour
             requiredRotation = Quaternion.LookRotation(movementDirection);
         }
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, requiredRotation, rotSpeed* Time.deltaTime); // for the smooth roation
-    }
-    void FirstPersonMovement()
-    {
-        // will give direction
-        moveX = Input.GetAxisRaw("Horizontal");
-        moveZ = Input.GetAxisRaw("Vertical");
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, requiredRotation, rotSpeed * Time.deltaTime); // for the smooth roation
         
-        //combine this above 2 direction
-        Vector3 move = transform.forward * moveZ + transform.right * moveX;
-        transform.position += move * speed * Time.deltaTime;
         
+        if( characters == characterType.Player)
+        {
+            playerAnimator.SetFloat("MOVEVALUE", movementAmout);
+        }
+        else if(characters == characterType.Dog)
+        {
+            dogAnimator.SetFloat("DOGMOVEVALUE", movementAmout);
+        }
+        
+
+
     }
+
 
 
 }

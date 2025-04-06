@@ -6110,13 +6110,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3937485913377328133}
+  - component: {fileID: 6936931315095180929}
+  - component: {fileID: 6936931315095180928}
   - component: {fileID: 6936931315095180927}
   - component: {fileID: 6936931315095180931}
   - component: {fileID: 6936931315095180930}
-  - component: {fileID: 6936931315095180929}
-  - component: {fileID: 6936931315095180928}
   m_Layer: 0
-  m_Name: Character
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
