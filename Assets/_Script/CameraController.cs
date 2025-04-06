@@ -78,7 +78,7 @@ public class CameraController : MonoBehaviour
 
         Vector3 playerPosition = player.position;
 
-        transform.position = playerPosition - targetRotation * new Vector3(0f, 0f, 0f);
+        transform.position = playerPosition - targetRotation * new Vector3(0f, -1.4f, 0f);
         transform.rotation = targetRotation;
 
         player.rotation = targetRotation;

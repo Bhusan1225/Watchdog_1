@@ -9,22 +9,31 @@ public class PlayerMovement : MonoBehaviour
     public float moveX;
     public float moveZ;
 
+    public bool isThirdPersonActive;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        isThirdPersonActive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        if (isThirdPersonActive)
+        {
+            ThridPersonMovement();
+        }
+        else
+        {
+            FirstPersonMovement();
+        }
+        
 
     }
 
-    void Movement()
+    void ThridPersonMovement()
     {
         // will give direction
         moveX = Input.GetAxisRaw("Horizontal");
@@ -41,4 +50,22 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(movementInput);
         }
     }
+    void FirstPersonMovement()
+    {
+        // will give direction
+        moveX = Input.GetAxisRaw("Horizontal");
+        moveZ = Input.GetAxisRaw("Vertical");
+        
+        //combine this above 2 direction
+        Vector3 move = transform.forward * moveZ + transform.right * moveX;
+       
+        
+       
+
+    
+        transform.position += move * speed * Time.deltaTime;
+        
+    }
+
+
 }
