@@ -5,13 +5,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 3f;
-
     public float moveX;
     public float moveZ;
 
     public bool isThirdPersonActive;
-
     public CameraController camera;
+
+    public float rotSpeed = 600f;
+
+    Quaternion requiredRotation;
 
 
     // Start is called before the first frame update
@@ -50,8 +52,10 @@ public class PlayerMovement : MonoBehaviour
         if (movementAmout > 0)
         {
             transform.position += movementDirection * speed * Time.deltaTime;
-            transform.rotation = Quaternion.LookRotation(movementDirection);
+            requiredRotation = Quaternion.LookRotation(movementDirection);
         }
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, requiredRotation, rotSpeed* Time.deltaTime); // for the smooth roation
     }
     void FirstPersonMovement()
     {
