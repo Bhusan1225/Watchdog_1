@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &29312547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 29312548}
+  m_Layer: 0
+  m_Name: NuroDropper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &29312548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29312547}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.161, y: 0.331, z: 0.934}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 800373288249144576}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &47296513
 GameObject:
   m_ObjectHideFlags: 0
@@ -3767,6 +3798,7 @@ Transform:
   - {fileID: 5687120094573520737}
   - {fileID: 4264360045516587992}
   - {fileID: 7067759659819033681}
+  - {fileID: 29312548}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &803496301979280716
@@ -9465,6 +9497,7 @@ GameObject:
   - component: {fileID: 4279873350049867355}
   - component: {fileID: 6932188266820036418}
   - component: {fileID: 813537896513708164}
+  - component: {fileID: 6932188266820036419}
   m_Layer: 0
   m_Name: Dog
   m_TagString: Untagged
@@ -10823,6 +10856,21 @@ MonoBehaviour:
   gap: 2
   minVarAngle: 0
   maxVarAngle: 0
+--- !u!114 &6932188266820036419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5490560185548623935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ade15198da7c643b68b5b73d57a308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nurolinkPrefab: {fileID: 4108225191973811034, guid: 029479eb4ccc31d4387d1a157d6a1dd2,
+    type: 3}
+  nuroDrop: {fileID: 29312548}
 --- !u!1 &7025702609864486417
 GameObject:
   m_ObjectHideFlags: 0

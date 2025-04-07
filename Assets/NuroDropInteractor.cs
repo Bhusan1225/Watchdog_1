@@ -11,51 +11,17 @@ public class NuroDropInteractor : MonoBehaviour
     public GameObject nurolinkPrefab;
     public Transform nuroDrop;
 
-    public float nuroScanRange;
-
- 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+   
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.X)) 
         { 
             Instantiate(nurolinkPrefab, nuroDrop.position, nuroDrop.rotation);
-            Invoke("checkRange", 1f);
         }
 
 
     }
 
-    void checkRange()
-    {
-        //isNearToDevice = Physics.CheckSphere(nurolinkPrefab.transform.position, nuroLinkRange, hackableMask);
-        Collider[] hits = Physics.OverlapSphere(nurolinkPrefab.transform.position, nuroScanRange);
-        
-        foreach (Collider hit in hits) 
-        {
-            if(hit.GetComponent<HackableObject>())
-            {
-                Debug.Log("Found the hackable device: " + hit.gameObject.name);
-                // Do something with the specific object
-            }
-        }
-    }
-
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-
-
-        // Draw CheckSphere at the position of the spawned enemy
-        Gizmos.DrawWireSphere(nurolinkPrefab.transform.position, nuroScanRange);
-
-
-    }
+    
 }
