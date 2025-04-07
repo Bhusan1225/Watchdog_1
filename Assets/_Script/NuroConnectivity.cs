@@ -6,6 +6,7 @@ public class NuroConnectivity : MonoBehaviour
 {
     public float nuroScanRange;
     // Start is called before the first frame update
+    public Collider[] hits;
     void Start()
     {
         
@@ -20,7 +21,7 @@ public class NuroConnectivity : MonoBehaviour
     void checkRange()
     {
         //isNearToDevice = Physics.CheckSphere(nurolinkPrefab.transform.position, nuroLinkRange, hackableMask);
-        Collider[] hits = Physics.OverlapSphere(transform.position, nuroScanRange);
+       hits = Physics.OverlapSphere(transform.position, nuroScanRange);
 
         foreach (Collider hit in hits)
         {
