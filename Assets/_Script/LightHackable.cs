@@ -9,4 +9,10 @@ public class LightHackable : HackableObject
         HackingUIManager.Instance.HideAllHackOptionPanels();
         HackingUIManager.Instance.optionPanelTypeB.SetActive(true);
     }
+
+    public override void Action1()
+    {
+       //will add logic later
+
+    }
 }

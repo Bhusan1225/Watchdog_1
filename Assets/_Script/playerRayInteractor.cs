@@ -6,7 +6,7 @@ public class PlayerRayInteractor : MonoBehaviour
 {
     public static PlayerRayInteractor instance;
 
-    public Camera camera;
+    public Camera theCamera;
     public  HackableObject hackableObject = null;
 
     private void Awake()
@@ -24,7 +24,7 @@ public class PlayerRayInteractor : MonoBehaviour
     void Update()
     {
         Vector3 screenCenter = new Vector3(0.5f, 0.5f, 0f);
-        Ray ray = camera.ViewportPointToRay(screenCenter);
+        Ray ray = theCamera.ViewportPointToRay(screenCenter);
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {

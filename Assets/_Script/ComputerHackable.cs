@@ -9,4 +9,10 @@ public class ComputerHackable : HackableObject
         HackingUIManager.Instance.HideAllHackOptionPanels();
         HackingUIManager.Instance.optionPanelTypeC.SetActive(true);
     }
+
+    public override void Action1()
+    {
+        //will add logic later
+
+    }
 }

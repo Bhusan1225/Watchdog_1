@@ -60,7 +60,7 @@ public class HackingUIManager : MonoBehaviour
     }
     public void BlastBomb()
     {
-        currentObject.ShowHackOptions();
+        currentObject.Action1();
     }
 
     public void OnDeclineHack()

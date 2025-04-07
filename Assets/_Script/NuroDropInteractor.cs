@@ -11,13 +11,15 @@ public class NuroDropInteractor : MonoBehaviour
     public GameObject nurolinkPrefab;
     public Transform nuroDrop;
 
-   
+    private GameObject nurolinkInstance;
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.X)) 
-        { 
-            Instantiate(nurolinkPrefab, nuroDrop.position, nuroDrop.rotation);
+        {
+            nurolinkInstance= Instantiate(nurolinkPrefab, nuroDrop.position, nuroDrop.rotation);
+            Destroy(nurolinkInstance, 20f);
         }
 
 

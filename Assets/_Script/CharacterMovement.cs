@@ -23,7 +23,7 @@ public class CharacterMovement : MonoBehaviour
     public float groundDistance;
     public LayerMask groundMask;
     Vector3 velocity;
-    float gravity = -9.8f ;
+    //float gravity = -9.8f ;
     public float movementAmout;
     Vector3 movementDirection;
 
