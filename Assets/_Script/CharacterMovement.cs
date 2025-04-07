@@ -62,11 +62,11 @@ public class CharacterMovement : MonoBehaviour
 
         if (movementAmout > 0)
         {
-            transform.position += movementDirection * speed * Time.deltaTime;
+            this.transform.position += movementDirection * speed * Time.deltaTime;
             requiredRotation = Quaternion.LookRotation(movementDirection);
         }
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, requiredRotation, rotSpeed * Time.deltaTime); // for the smooth roation
+        this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, requiredRotation, rotSpeed * Time.deltaTime); // for the smooth roation
 
 
 
