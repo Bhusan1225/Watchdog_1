@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class CharacterMovement : MonoBehaviour
 {
+    
     public float speed = 3f;
     public float moveX;
     public float moveZ;
@@ -14,14 +15,17 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator dogAnimator;
     public Animator playerAnimator;
+    
     //grounded
     bool isGrounded;
     public Transform groundCheck;
     public float groundDistance;
     public LayerMask groundMask;
     Vector3 velocity;
-    float gravity = -9.8f ; 
+    float gravity = -9.8f ;
+    float movementAmout;
 
+    //public bool isWatchdogActivated;
     public enum characterType
     {
         Player,
@@ -48,8 +52,9 @@ public class PlayerMovement : MonoBehaviour
         // will give direction
         moveX = Input.GetAxisRaw("Horizontal");
         moveZ = Input.GetAxisRaw("Vertical");
+        
         //check if the target is moving
-        float movementAmout = Mathf.Clamp01(Mathf.Abs(moveX) + Mathf.Abs(moveZ));
+        movementAmout = Mathf.Clamp01(Mathf.Abs(moveX) + Mathf.Abs(moveZ));
 
         //combine this above 2 direction
         var movementInput = (new Vector3(moveX, 0, moveZ)).normalized;
@@ -62,21 +67,26 @@ public class PlayerMovement : MonoBehaviour
         }
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, requiredRotation, rotSpeed * Time.deltaTime); // for the smooth roation
-        
-        
-        if( characters == characterType.Player)
-        {
-            playerAnimator.SetFloat("MOVEVALUE", movementAmout);
-        }
-        else if(characters == characterType.Dog)
-        {
-            dogAnimator.SetFloat("DOGMOVEVALUE", movementAmout);
-        }
-        
+
+
+
+        CharacterMovementAnimation();
 
 
     }
 
 
+
+    public void CharacterMovementAnimation()
+    {
+        if (characters == characterType.Player )
+        {
+            playerAnimator.SetFloat("MOVEVALUE", movementAmout);
+        }
+        else if (characters == characterType.Dog)
+        {
+            dogAnimator.SetFloat("DOGMOVEVALUE", movementAmout);
+        }
+    }
 
 }
