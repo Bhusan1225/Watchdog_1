@@ -5,6 +5,7 @@ using UnityEngine;
 public class CompanionLocomotion : MonoBehaviour
 {
     public CharacterMovement playerMovement;
+    public CharacterMovement dogMovement;
     public ChaseAI dogchase;
 
     public GameObject playerCamera;
@@ -16,6 +17,7 @@ public class CompanionLocomotion : MonoBehaviour
     void Start()
     {
         dogCamera.SetActive(false);
+        //dogMovement.enabled = false;
     }
 
     // Update is called once per frame
@@ -27,6 +29,8 @@ public class CompanionLocomotion : MonoBehaviour
             playerCamera.SetActive(false);
             playerMovement.enabled = false;
             dogchase.enabled = false;
+            
+            dogMovement.isWatchdogActivated = true;
 
             dogCamera.SetActive(true);
 
@@ -36,6 +40,7 @@ public class CompanionLocomotion : MonoBehaviour
             playerCamera.SetActive(true);
             playerMovement.enabled = true;
             dogchase.enabled = true;
+            dogMovement.isWatchdogActivated = false;
 
             dogCamera.SetActive(false);
 
