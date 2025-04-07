@@ -4,34 +4,16 @@ using UnityEngine;
 
 public abstract class HackableObject : MonoBehaviour
 {
-    //public static HackableObject instance;
-
-    //private void Awake()
-    //{
-    //    if (instance != null && instance != this)
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //    else
-    //    {
-    //        instance = this;
-    //    }
-    //}
-
-
-
-
-    public abstract void hack();
    
-    // Start is called before the first frame update
-    void Start()
+
+    public void Hack()
     {
-        
+        // Ask UI Manager to show confirmation
+        HackingUIManager.Instance.ShowHackPrompt(this);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // This will be implemented by child classes to show specific options
+    public abstract void ShowHackOptions();
+
+    //public abstract void Action1();
 }

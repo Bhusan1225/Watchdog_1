@@ -37,7 +37,7 @@ public class PlayerRayInteractor : MonoBehaviour
                 hackableObject.GetComponent<Outline>().enabled = true;
                 if(Input.GetKeyDown(KeyCode.H))
                 {
-                    hackableObject.hack();
+                    hackableObject.Hack();
                 }
                 
             }

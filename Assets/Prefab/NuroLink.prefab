@@ -147,3 +147,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nuroScanRange: 1
+  hits: []
+  hackableObject: {fileID: 0}

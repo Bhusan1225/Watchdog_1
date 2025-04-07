@@ -4,21 +4,13 @@ using UnityEngine;
 
 public class DetonatorHackable : HackableObject
 {
-    public GameObject hackingPanel;
-    public override void hack()
+    
+    public override void ShowHackOptions()
     {
-        Debug.Log("hacking will happen in 10s");
-        hackingPanel.SetActive(true);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("you are insinde the detonator");
+        HackingUIManager.Instance.HideAllHackOptionPanels();
+        Debug.Log("you are insinde the hideallhackOptionPanel");
+        HackingUIManager.Instance.detonatorUIPanel.SetActive(true);
+       
     }
 }

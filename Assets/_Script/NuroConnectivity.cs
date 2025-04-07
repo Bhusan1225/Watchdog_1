@@ -7,6 +7,7 @@ public class NuroConnectivity : MonoBehaviour
     public float nuroScanRange;
     // Start is called before the first frame update
     public Collider[] hits;
+    public HackableObject hackableObject = null;
     void Start()
     {
         
@@ -27,8 +28,15 @@ public class NuroConnectivity : MonoBehaviour
         {
             if (hit.GetComponent<HackableObject>())
             {
-                Debug.Log("Found the hackable device: " + hit.gameObject.name);
+                //Debug.Log("Found the hackable device: " + hit.gameObject.name);
                 // Do something with the specific object
+
+                hackableObject = hit.gameObject.GetComponent<HackableObject>();
+                if (Input.GetKeyDown(KeyCode.H)) 
+                {
+                    hackableObject.Hack();
+                }
+                
             }
         }
     }

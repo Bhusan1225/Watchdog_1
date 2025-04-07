@@ -4,22 +4,9 @@ using UnityEngine;
 
 public class LightHackable : HackableObject
 {
-
-    public GameObject hackingPanel;
-    public override void hack()
+    public override void ShowHackOptions()
     {
-        Debug.Log("hacking will happen in 10s");
-        hackingPanel.SetActive(true);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        HackingUIManager.Instance.HideAllHackOptionPanels();
+        HackingUIManager.Instance.optionPanelTypeB.SetActive(true);
     }
 }
