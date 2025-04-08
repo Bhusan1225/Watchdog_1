@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8460347008749109131}
   - component: {fileID: 1218549768841206162}
   - component: {fileID: 3238594702420407959}
-  - component: {fileID: 5071602971236930241}
+  - component: {fileID: -4270708887215531225}
   m_Layer: 0
   m_Name: NuroLink
   m_TagString: Untagged
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5071602971236930241
+--- !u!114 &-4270708887215531225
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,9 +143,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4108225191973811034}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 288d546b079d28a408e664bf5ea2070c, type: 3}
+  m_Script: {fileID: 11500000, guid: cd7255b4af0215b4a9077f8cbd0fbbdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nuroScanRange: 1
+  scanRange: 1
   hits: []
   hackableObject: {fileID: 0}

@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NuroConnectivity : MonoBehaviour
+public class OverLapSphereInteractor : MonoBehaviour
 {
-    public float nuroScanRange;
+    public float scanRange;
     // Start is called before the first frame update
     public Collider[] hits;
     public HackableObject hackableObject = null;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class NuroConnectivity : MonoBehaviour
     void checkRange()
     {
         //isNearToDevice = Physics.CheckSphere(nurolinkPrefab.transform.position, nuroLinkRange, hackableMask);
-       hits = Physics.OverlapSphere(transform.position, nuroScanRange);
+        hits = Physics.OverlapSphere(transform.position, scanRange);
 
         foreach (Collider hit in hits)
         {
@@ -32,11 +32,11 @@ public class NuroConnectivity : MonoBehaviour
                 // Do something with the specific object
 
                 hackableObject = hit.gameObject.GetComponent<HackableObject>();
-                if (Input.GetKeyDown(KeyCode.H)) 
+                if (Input.GetKeyDown(KeyCode.H))
                 {
                     hackableObject.Hack();
                 }
-                
+
             }
         }
     }
@@ -48,8 +48,9 @@ public class NuroConnectivity : MonoBehaviour
 
 
         // Draw CheckSphere at the position of the spawned enemy
-        Gizmos.DrawWireSphere(transform.position, nuroScanRange);
+        Gizmos.DrawWireSphere(transform.position, scanRange);
 
 
     }
 }
+
