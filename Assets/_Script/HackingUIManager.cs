@@ -21,6 +21,9 @@ public class HackingUIManager : MonoBehaviour
     public Button blastButton;
 
     [Header("Computer Option")]
+    public Button cryptoButton;
+    public Button codeButton;
+
 
     [Header("Light Option")]
     public Button redButton;
@@ -62,8 +65,9 @@ public class HackingUIManager : MonoBehaviour
 
         ActiveBombButtons();
         ActiveTrafficButtons();
+        ActiveComputerButtons();
 
-        
+
     }
 
     void ActiveBombButtons()
@@ -79,6 +83,14 @@ public class HackingUIManager : MonoBehaviour
         redButton.onClick.AddListener(Action1);
         yellowButton.onClick.AddListener(Action2);
         greenButton.onClick.AddListener(Action3);
+    }
+
+    void ActiveComputerButtons()
+    {
+        //traffic Light
+        cryptoButton.onClick.AddListener(Action1);
+        codeButton.onClick.AddListener(Action2);
+        
     }
 
     public void Action1()
