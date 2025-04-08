@@ -16,4 +16,8 @@ public abstract class HackableObject : MonoBehaviour
     public abstract void ShowHackOptions();
 
     public abstract void Action1();
+
+    public abstract void Action2();
+
+    public abstract void Action3();
 }

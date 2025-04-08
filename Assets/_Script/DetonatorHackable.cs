@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Device;
 
 public class DetonatorHackable : HackableObject
 {
@@ -26,5 +27,20 @@ public class DetonatorHackable : HackableObject
     private void SpawnBlastParticle()
     {
         blastParticleInstance = Instantiate(blastParticle, blastPostion.position, Quaternion.identity);
+    }
+
+
+    public override void Action2()
+    {
+
+        Debug.Log("Action 2 - there is no function, you can add in the script if you want");
+
+
+    }
+
+    public override void Action3()
+    {
+        Debug.Log("Action 3- there is no function, you can add in the script if you want");
+
     }
 }

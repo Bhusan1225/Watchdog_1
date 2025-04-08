@@ -15,4 +15,18 @@ public class ComputerHackable : HackableObject
         //will add logic later
 
     }
+
+    public override void Action2()
+    {
+
+        Debug.Log("Action 2 - there is no function, you can add in the script if you want");
+
+
+    }
+
+    public override void Action3()
+    {
+        Debug.Log("Action 3- there is no function, you can add in the script if you want");
+
+    }
 }

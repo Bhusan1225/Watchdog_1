@@ -8,7 +8,8 @@ public class CameraController : MonoBehaviour
    
 
     public Transform target;
-    public float gap = 2f;
+    public float cameraGap = 2f;
+    public float cameraHeight = 1f;
 
     float rotX;
     float rotY;
@@ -55,7 +56,7 @@ public class CameraController : MonoBehaviour
     {
         var targetRotation = Quaternion.Euler(rotX, rotY, 0);
         
-        transform.position = target.position - targetRotation * new Vector3(0f, 0f, gap);
+        transform.position = target.position - targetRotation * new Vector3(0f, cameraHeight, cameraGap);
         transform.rotation = targetRotation;
     }
 

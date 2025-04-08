@@ -23,10 +23,15 @@ public class HackingUIManager : MonoBehaviour
     [Header("Computer Option")]
 
     [Header("Light Option")]
+    public Button redButton;
+    public Button yellowButton;
+    public Button greenButton;
 
 
-
+    [Header("Hacked Object")]
     public HackableObject currentObject;
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -55,12 +60,43 @@ public class HackingUIManager : MonoBehaviour
         hackPromptPanel.SetActive(false);
         currentObject.ShowHackOptions();
 
-        //bomb
-        blastButton.onClick.AddListener(BlastBomb);
+        ActiveBombButtons();
+        ActiveTrafficButtons();
+
+        
     }
-    public void BlastBomb()
+
+    void ActiveBombButtons()
+    {
+        //bomb
+        blastButton.onClick.AddListener(Action1);
+
+    }
+
+    void ActiveTrafficButtons()
+    {
+        //traffic Light
+        redButton.onClick.AddListener(Action1);
+        yellowButton.onClick.AddListener(Action2);
+        greenButton.onClick.AddListener(Action3);
+    }
+
+    public void Action1()
     {
         currentObject.Action1();
+        
+    }
+
+    public void Action2()
+    {
+        currentObject.Action2();
+
+    }
+
+    public void Action3()
+    {
+        currentObject.Action3();
+
     }
 
     public void OnDeclineHack()
