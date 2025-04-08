@@ -5434,10 +5434,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 800373288249144576}
-  cameraGap: 2
-  cameraHeight: 1
-  minVarAngle: 15
-  maxVarAngle: 45
+  cameraGap: 1.5
+  cameraHeight: -0.6
+  minVarAngle: 1
+  maxVarAngle: 90
   isThirdPersonActive: 0
 --- !u!1 &1925054663
 GameObject:
