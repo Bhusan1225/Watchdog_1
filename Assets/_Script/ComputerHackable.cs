@@ -15,7 +15,10 @@ public class ComputerHackable : HackableObject
     public List<string> codes = new List<string>();
     private List<GameObject> CODES = new List<GameObject>();
 
-  
+    //animation
+    public Animator popupAnimator;
+    private bool isCryptoAdded = false;
+
     public override void ShowHackOptions()
     {
         HackingUIManager.Instance.HideAllHackOptionPanels();
@@ -29,6 +32,8 @@ public class ComputerHackable : HackableObject
         codes.Add("ABC123");
         codes.Add("DEF456");
         codes.Add("GHI789");
+        codes.Add("GHI753");
+
 
         for (int i = 0; i < codeHolder.transform.childCount; i++) 
         { 
@@ -40,13 +45,29 @@ public class ComputerHackable : HackableObject
     public override void Action1()
     {
         AddCrypto();
+       
 
     }
     public void AddCrypto()
     {
         crypto += 30;
         cryptoText.text = "Crypto: " + crypto.ToString();
+        isCryptoAdded = true;
+
+        if (isCryptoAdded)
+        {
+            popupAnimator.SetBool("POPUP", true);
+            isCryptoAdded = false; // Reset the flag right after triggering
+            StartCoroutine(ResetPopupBool()); // Reset the animator bool after a short delay
+        }
     }
+
+    private IEnumerator ResetPopupBool()
+    {
+        yield return new WaitForSeconds(1f); // Wait for the popup animation duration
+        popupAnimator.SetBool("POPUP", false); // Reset the animation flag
+    }
+
     public override void Action2()
     {
         
