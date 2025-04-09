@@ -90,7 +90,7 @@ public class HackingUIManager : MonoBehaviour
     {
         if (inputTextFieldDetonator.text == DetonatorpcorrectCode)
         {
-           //blastButton.onClick.RemoveAllListeners();
+            blastButton.onClick.RemoveAllListeners();
             blastButton.onClick.AddListener(Action1);
         }
         else

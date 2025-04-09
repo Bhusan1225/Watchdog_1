@@ -29,10 +29,10 @@ public class ComputerHackable : HackableObject
     {
         cryptoText.text = "Crypto: " + crypto.ToString();
 
-        codes.Add("ABC123");
-        codes.Add("DEF456");
+        codes.Add("DET123");
+        codes.Add("MIT173");
         codes.Add("GHI789");
-        codes.Add("GHI753");
+        codes.Add("LIT123");
 
 
         for (int i = 0; i < codeHolder.transform.childCount; i++) 
