@@ -21,14 +21,31 @@ public class DetonatorHackable : HackableObject
     public override void Action1() 
     {
         Debug.Log("detonator- BOOM-BOOM-BOOM-BOOM");
-        SpawnBlastParticle();
+        BlastParticleEffect();
+        DetonatorBlastEffect();
 
     }
-    private void SpawnBlastParticle()
+    private void BlastParticleEffect()
     {
         blastParticleInstance = Instantiate(blastParticle, blastPostion.position, Quaternion.identity);
     }
 
+
+    void DetonatorBlastEffect()
+    {
+        Collider[] collider = Physics.OverlapSphere(transform.position, 7);
+
+        foreach (Collider Object in collider)
+        {
+            Rigidbody rb = Object.GetComponent<Rigidbody>();
+
+            if (Object.GetComponent<Rigidbody>() != null && Object.CompareTag("BombBox"))
+            {
+                rb.AddExplosionForce(1000, transform.position, 7);
+            }
+            Destroy(this.gameObject);
+        }
+    }
 
     public override void Action2()
     {
