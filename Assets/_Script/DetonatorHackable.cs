@@ -12,11 +12,15 @@ public class DetonatorHackable : HackableObject
     private ParticleSystem blastParticleInstance;
     public override void ShowHackOptions()
     {
-        Debug.Log("you are insinde the detonator");
+      
         HackingUIManager.Instance.HideAllHackOptionPanels();
-        Debug.Log("you are insinde the hideallhackOptionPanel");
         HackingUIManager.Instance.detonatorUIPanel.SetActive(true);
        
+    }
+
+    public override void CloseAction()
+    {
+        HackingUIManager.Instance.detonatorUIPanel.SetActive(false);
     }
     public override void Action1() 
     {

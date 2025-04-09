@@ -21,12 +21,14 @@ public class HackingUIManager : MonoBehaviour
     [Header("Hacking System")]
     public Button yesButton;
     public Button noButton;
+    
 
     [Header("Detonator Option")]
     public Button blastButton;
     public Button checkDetonatorcodeButton;
     public string DetonatorpcorrectCode;
     public TMP_InputField inputTextFieldDetonator;
+    public Button closeButtonDet;
 
     [Header("Computer Option")]
     public Button cryptoButton;
@@ -34,6 +36,7 @@ public class HackingUIManager : MonoBehaviour
     public Button checkComputercodeButton;
     public string ComputercorrectCode = "mypassword123";
     public TMP_InputField inputTextFieldComp;
+    public Button closeButtonPC;
 
     [Header("Light Option")]
     public Button redButton;
@@ -42,6 +45,7 @@ public class HackingUIManager : MonoBehaviour
     public Button checkLightcodeButton;
     public string lightpcorrectCode = "mypassword123";
     public TMP_InputField inputTextFieldLight;
+    public Button closeButtonlit;
 
     [Header("Hacked Object")]
     public HackableObject currentObject;
@@ -92,6 +96,7 @@ public class HackingUIManager : MonoBehaviour
         {
             blastButton.onClick.RemoveAllListeners();
             blastButton.onClick.AddListener(Action1);
+            closeButtonDet.onClick.AddListener(CloseAction);
         }
         else
         {
@@ -111,6 +116,7 @@ public class HackingUIManager : MonoBehaviour
             redButton.onClick.AddListener(Action1);
             yellowButton.onClick.AddListener(Action2);
             greenButton.onClick.AddListener(Action3);
+            closeButtonlit.onClick.AddListener(CloseAction);
         }
         else
         {
@@ -130,6 +136,8 @@ public class HackingUIManager : MonoBehaviour
 
             cryptoButton.onClick.AddListener(Action1);
             codeButton.onClick.AddListener(Action2);
+            closeButtonPC.onClick.AddListener(CloseAction);
+
         }
         else
         {
@@ -152,6 +160,11 @@ public class HackingUIManager : MonoBehaviour
     public void Action3()
     {
         currentObject.Action3();
+    }
+
+    public void CloseAction()
+    {
+        currentObject.CloseAction();
     }
 
     public void OnDeclineHack()

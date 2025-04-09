@@ -14,7 +14,7 @@ public abstract class HackableObject : MonoBehaviour
 
     // This will be implemented by child classes to show specific options
     public abstract void ShowHackOptions();
-
+    public abstract void CloseAction();
     public abstract void Action1();
 
     public abstract void Action2();

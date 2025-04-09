@@ -20,13 +20,12 @@ public class LightHackable : HackableObject
         
     }
 
-  
-
-    private void Update()
+    public override void CloseAction()
     {
-        
+        HackingUIManager.Instance.optionPanelTypeB.SetActive(false);
     }
 
+ 
     public override void ShowHackOptions()
     {
         HackingUIManager.Instance.HideAllHackOptionPanels();

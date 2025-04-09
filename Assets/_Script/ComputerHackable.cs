@@ -24,7 +24,10 @@ public class ComputerHackable : HackableObject
         HackingUIManager.Instance.HideAllHackOptionPanels();
         HackingUIManager.Instance.optionPanelTypeC.SetActive(true);
     }
-
+    public override void CloseAction()
+    {
+        HackingUIManager.Instance.optionPanelTypeC.SetActive(false);
+    }
     private void Start()
     {
         cryptoText.text = "Crypto: " + crypto.ToString();
@@ -41,7 +44,7 @@ public class ComputerHackable : HackableObject
 
         }
     }
-
+  
     public override void Action1()
     {
         AddCrypto();
