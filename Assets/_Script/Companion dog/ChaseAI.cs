@@ -4,28 +4,19 @@ using UnityEngine;
 
 public class ChaseAI : MonoBehaviour
 {
-    public Transform target;
-    public float x;
-    public float y;
-    public float gap = 2f;
+
+    [SerializeField] Transform target;
+    [SerializeField] float x;
+    [SerializeField] float y;
+    [SerializeField] float gap = 2f;
 
     float rotX;
     float rotY;
 
-    public float minVarAngle = -45f;
-    public float maxVarAngle = 45f;
-
-    
+    [SerializeField] float minVarAngle = -45f;
+    [SerializeField] float maxVarAngle = 45f;
 
 
-    void Start()
-    {
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
-       
-    }
-
-    // Update is called once per frame
     void Update()
     {
 
@@ -35,11 +26,9 @@ public class ChaseAI : MonoBehaviour
 
         var targetRotation = Quaternion.Euler(rotX, rotY, 0);
 
-        //transform.position = target.position - targetRotation *new Vector3(x, y, gap);
         transform.position = target.position -  new Vector3(x, y, gap);
-        //transform.rotation = targetRotation;
+       
 
     }
 
-   
 }

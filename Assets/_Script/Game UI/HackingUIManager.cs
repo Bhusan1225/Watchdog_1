@@ -1,51 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
-
-//using UnityEngine.UIElements;
 using UnityEngine.UI;
-using Unity.VisualScripting;
+
 
 public class HackingUIManager : MonoBehaviour
 {
     public static HackingUIManager Instance;
 
     [Header("Panels")]
-    public GameObject hackPromptPanel;
-    public GameObject detonatorUIPanel;
-    public GameObject optionPanelTypeB;
-    public GameObject optionPanelTypeC;
+    [SerializeField] GameObject hackPromptPanel;
+    [SerializeField] internal GameObject detonatorUIPanel;
+    [SerializeField] internal GameObject optionPanelTypeB;
+    [SerializeField] internal GameObject optionPanelTypeC;
 
     [Header("Hacking System")]
-    public Button yesButton;
-    public Button noButton;
+    [SerializeField] Button yesButton;
+    [SerializeField] Button noButton;
     
 
     [Header("Detonator Option")]
-    public Button blastButton;
-    public Button checkDetonatorcodeButton;
-    public string DetonatorpcorrectCode;
-    public TMP_InputField inputTextFieldDetonator;
-    public Button closeButtonDet;
+    [SerializeField] Button blastButton;
+    [SerializeField] Button checkDetonatorcodeButton;
+    [SerializeField] string DetonatorpcorrectCode;
+    [SerializeField] TMP_InputField inputTextFieldDetonator;
+    [SerializeField] Button closeButtonDet;
 
     [Header("Computer Option")]
-    public Button cryptoButton;
-    public Button codeButton;
-    public Button checkComputercodeButton;
-    public string ComputercorrectCode = "mypassword123";
-    public TMP_InputField inputTextFieldComp;
-    public Button closeButtonPC;
+    [SerializeField] Button cryptoButton;
+    [SerializeField] Button codeButton;
+    [SerializeField] Button checkComputercodeButton;
+    [SerializeField] string ComputercorrectCode = "mypassword123";
+    [SerializeField] TMP_InputField inputTextFieldComp;
+    [SerializeField] Button closeButtonPC;
 
     [Header("Light Option")]
-    public Button redButton;
-    public Button yellowButton;
-    public Button greenButton;
-    public Button checkLightcodeButton;
-    public string lightpcorrectCode = "mypassword123";
-    public TMP_InputField inputTextFieldLight;
-    public Button closeButtonlit;
+    [SerializeField] Button redButton;
+    [SerializeField] Button yellowButton;
+    [SerializeField] Button greenButton;
+    [SerializeField] Button checkLightcodeButton;
+    [SerializeField] string lightpcorrectCode = "mypassword123";
+    [SerializeField] TMP_InputField inputTextFieldLight;
+    [SerializeField] Button closeButtonlit;
 
     [Header("Hacked Object")]
     public HackableObject currentObject;
@@ -86,7 +81,6 @@ public class HackingUIManager : MonoBehaviour
         checkDetonatorcodeButton.onClick.AddListener(ActiveDetonatorButtons);
         checkLightcodeButton.onClick.AddListener(ActiveTrafficButtons);
 
-       
     }
 
 

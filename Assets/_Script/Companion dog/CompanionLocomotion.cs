@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CompanionLocomotion : MonoBehaviour
 {
-    public CharacterMovement playerMovement;
-    public CharacterMovement dogMovement;
-    public ChaseAI dogchase;
+    [SerializeField] CharacterMovement playerMovement;
+    [SerializeField] CharacterMovement dogMovement;
+    [SerializeField] ChaseAI dogchase;
 
-    public GameObject playerCamera;
-    public GameObject dogCamera;
+    [SerializeField] GameObject playerCamera;
+    [SerializeField] GameObject dogCamera;
 
 
 
@@ -17,7 +17,7 @@ public class CompanionLocomotion : MonoBehaviour
     void Start()
     {
         dogCamera.SetActive(false);
-        //dogMovement.enabled = false;
+       
     }
 
     // Update is called once per frame

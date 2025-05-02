@@ -5,15 +5,14 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-
     public static UIManager Instance;
-    public GameObject cameraViewUI;
-    public GameObject dotPanel;
+    [SerializeField] GameObject cameraViewUI;
+    [SerializeField] GameObject dotPanel;
 
-    public CameraController theCamera;
-   
-    public Button firstPersonViewButton;
-    public Button thirdPersonViewButton;
+    [SerializeField] internal CameraController theCamera;
+
+    [SerializeField] internal Button firstPersonViewButton;
+    [SerializeField] internal Button thirdPersonViewButton;
 
 
     void Awake()

@@ -5,27 +5,18 @@ using UnityEngine;
 public class LightHackable : HackableObject
 {
     [Header("TrafficLight")]
-    public Renderer redLightRender;
-    public Renderer yelloLightRender;
-    public Renderer greenLightRender;
+    [SerializeField] Renderer redLightRender;
+    [SerializeField] Renderer yelloLightRender;
+    [SerializeField] Renderer greenLightRender;
 
-    
+    private bool isRed;
+    private bool isYellow;
+    private bool isGreen;
 
-    bool isRed;
-    bool isYellow;
-    bool isGreen;
-    private void Start()
-    {
-        isRed = true;
-        
-    }
+    private void Start() => isRed = true;
 
-    public override void CloseAction()
-    {
-        HackingUIManager.Instance.optionPanelTypeB.SetActive(false);
-    }
+    public override void CloseAction() => HackingUIManager.Instance.optionPanelTypeB.SetActive(false);
 
- 
     public override void ShowHackOptions()
     {
         HackingUIManager.Instance.HideAllHackOptionPanels();
@@ -42,8 +33,6 @@ public class LightHackable : HackableObject
             redLightRender.material.color = Color.red;
             yelloLightRender.material.color = Color.gray;
             greenLightRender.material.color = Color.gray;
-
-
         }
     }
 
@@ -60,11 +49,8 @@ public class LightHackable : HackableObject
             yelloLightRender.material.color = Color.yellow;
             greenLightRender.material.color = Color.gray;
         }
-        
-
 
     }
-
     public override void Action3()
     {
         isRed = false;
@@ -77,7 +63,5 @@ public class LightHackable : HackableObject
             yelloLightRender.material.color = Color.gray;
             greenLightRender.material.color = Color.green;
         }
-
-
     }
 }

@@ -6,8 +6,8 @@ public class PlayerRayInteractor : MonoBehaviour
 {
     public static PlayerRayInteractor instance;
 
-    public Camera theCamera;
-    public  HackableObject hackableObject = null;
+    [SerializeField] Camera theCamera;
+    [SerializeField] HackableObject hackableObject = null;
 
     private void Awake()
     {
@@ -39,7 +39,6 @@ public class PlayerRayInteractor : MonoBehaviour
                 {
                     hackableObject.Hack();
                 }
-                
             }
             else
             {
@@ -49,7 +48,6 @@ public class PlayerRayInteractor : MonoBehaviour
                 }
             }
         }
-       
     }
 }
 

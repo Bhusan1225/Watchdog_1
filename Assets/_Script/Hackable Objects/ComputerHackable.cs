@@ -5,29 +5,25 @@ using TMPro;
 
 public class ComputerHackable : HackableObject
 {
-
     [Header("Steal crypto")]
-    public int crypto = 5000;
-    [SerializeField] private TextMeshProUGUI cryptoText;
+    [SerializeField] int crypto = 5000;
+    [SerializeField] TextMeshProUGUI cryptoText;
 
     [Header("Steal codes")]
-    [SerializeField] private GameObject codeHolder;
-    public List<string> codes = new List<string>();
-    private List<GameObject> CODES = new List<GameObject>();
+    [SerializeField] GameObject codeHolder;
+    [SerializeField] List<string> codes = new List<string>();
+    [SerializeField] List<GameObject> CODES = new List<GameObject>();
 
     //animation
-    public Animator popupAnimator;
-    private bool isCryptoAdded = false;
+    [SerializeField] Animator popupAnimator;
+    [SerializeField] bool isCryptoAdded = false;
 
     public override void ShowHackOptions()
     {
         HackingUIManager.Instance.HideAllHackOptionPanels();
         HackingUIManager.Instance.optionPanelTypeC.SetActive(true);
     }
-    public override void CloseAction()
-    {
-        HackingUIManager.Instance.optionPanelTypeC.SetActive(false);
-    }
+    public override void CloseAction() => HackingUIManager.Instance.optionPanelTypeC.SetActive(false);
     private void Start()
     {
         cryptoText.text = "Crypto: " + crypto.ToString();
@@ -41,16 +37,11 @@ public class ComputerHackable : HackableObject
         for (int i = 0; i < codeHolder.transform.childCount; i++) 
         { 
             CODES.Add(codeHolder.transform.GetChild(i).gameObject);
-
         }
     }
   
-    public override void Action1()
-    {
-        AddCrypto();
-       
-
-    }
+    public override void Action1() => AddCrypto();
+ 
     public void AddCrypto()
     {
         crypto += 30;
@@ -73,8 +64,6 @@ public class ComputerHackable : HackableObject
 
     public override void Action2()
     {
-        
-
         for (int i = 0; i < codes.Count && i < CODES.Count; i++)
         {
             TextMeshProUGUI textComponent = CODES[i].GetComponent<TextMeshProUGUI>();
@@ -89,10 +78,6 @@ public class ComputerHackable : HackableObject
         }
     }
 
+    public override void Action3() => Debug.Log("Action 3- There is no functionality");
    
-    public override void Action3()
-    {
-        Debug.Log("Action 3- there is no function, you can add in the script if you want");
-
-    }
 }

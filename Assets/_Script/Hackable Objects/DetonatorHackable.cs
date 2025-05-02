@@ -5,36 +5,27 @@ using UnityEngine.Device;
 
 public class DetonatorHackable : HackableObject
 {
-    public ParticleSystem blastParticle;
-    public Transform blastPostion;
-    
+    [SerializeField] ParticleSystem blastParticle;
+    [SerializeField] Transform blastPostion;
 
     private ParticleSystem blastParticleInstance;
     public override void ShowHackOptions()
     {
-      
         HackingUIManager.Instance.HideAllHackOptionPanels();
         HackingUIManager.Instance.detonatorUIPanel.SetActive(true);
-       
     }
 
-    public override void CloseAction()
-    {
-        HackingUIManager.Instance.detonatorUIPanel.SetActive(false);
-    }
+    public override void CloseAction() => HackingUIManager.Instance.detonatorUIPanel.SetActive(false);
+   
     public override void Action1() 
     {
         Debug.Log("detonator- BOOM-BOOM-BOOM-BOOM");
         BlastParticleEffect();
         DetonatorBlastEffect();
-
-    }
-    private void BlastParticleEffect()
-    {
-        blastParticleInstance = Instantiate(blastParticle, blastPostion.position, Quaternion.identity);
     }
 
-
+    private void BlastParticleEffect()=> blastParticleInstance = Instantiate(blastParticle, blastPostion.position, Quaternion.identity);
+   
     void DetonatorBlastEffect()
     {
         Collider[] collider = Physics.OverlapSphere(transform.position, 7);
@@ -51,17 +42,8 @@ public class DetonatorHackable : HackableObject
         }
     }
 
-    public override void Action2()
-    {
-
-        Debug.Log("Action 2 - there is no function, you can add in the script if you want");
-
-
-    }
-
-    public override void Action3()
-    {
-        Debug.Log("Action 3- there is no function, you can add in the script if you want");
-
-    }
+    public override void Action2() => Debug.Log("Action 2 - There is no functionality");
+ 
+    public override void Action3() => Debug.Log("Action 3 - There is no functionality");
+    
 }

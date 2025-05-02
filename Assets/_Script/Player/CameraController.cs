@@ -5,25 +5,19 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-   
-
-    public Transform target;
-    public float cameraGap = 2f;
-    public float cameraHeight = 1f;
+    [SerializeField] Transform target;
+    [SerializeField] float cameraGap = 2f;
+    [SerializeField] float cameraHeight = 1f;
 
     float rotX;
     float rotY;
 
-    public float minVarAngle = -45f;
-    public float maxVarAngle =  45f;
-
-    public bool isThirdPersonActive;
-
+    [SerializeField] float minVarAngle = -45f;
+    [SerializeField] float maxVarAngle =  45f;
+    [SerializeField] internal bool isThirdPersonActive;
 
     void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
         isThirdPersonActive = true;
     }
 
@@ -35,27 +29,19 @@ public class CameraController : MonoBehaviour
         rotX = Mathf.Clamp(rotX, minVarAngle, maxVarAngle);
         rotY += Input.GetAxis("Mouse X");
 
-
-
         if (isThirdPersonActive)
         {
-        
             thirdPerson();
         }
         else
         {
-           
-            
             firstPerson();
         }
-
     }
-
-
     public void thirdPerson()
     {
         var targetRotation = Quaternion.Euler(rotX, rotY, 0);
-        
+    
         transform.position = target.position - targetRotation * new Vector3(0f, cameraHeight, cameraGap);
         transform.rotation = targetRotation;
     }
@@ -71,6 +57,5 @@ public class CameraController : MonoBehaviour
 
         target.rotation = targetRotation;
     }
-
     public Quaternion flatRoation => Quaternion.Euler(0, rotY, 0);
 }

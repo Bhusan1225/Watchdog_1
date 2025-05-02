@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class HackableObject : MonoBehaviour
 {
-   
-
     public void Hack()
     {
         // Ask UI Manager to show confirmation
@@ -16,8 +14,6 @@ public abstract class HackableObject : MonoBehaviour
     public abstract void ShowHackOptions();
     public abstract void CloseAction();
     public abstract void Action1();
-
     public abstract void Action2();
-
     public abstract void Action3();
 }

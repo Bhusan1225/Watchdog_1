@@ -8,8 +8,8 @@ public class NuroDropInteractor : MonoBehaviour
     /// Nuro Drop is a script that handles the drop of nurolink gadget near the device you want to hack.This will drop by the player's companioun-dog.
     /// </summary>
 
-    public GameObject nurolinkPrefab;
-    public Transform nuroDrop;
+    [SerializeField] GameObject nurolinkPrefab;
+    [SerializeField] Transform nuroDrop;
 
     private GameObject nurolinkInstance;
 
@@ -21,9 +21,5 @@ public class NuroDropInteractor : MonoBehaviour
             nurolinkInstance= Instantiate(nurolinkPrefab, nuroDrop.position, nuroDrop.rotation);
             Destroy(nurolinkInstance, 20f);
         }
-
-
     }
-
-    
 }

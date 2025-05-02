@@ -4,30 +4,30 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    
-    public float speed = 3f;
-    public float moveX;
-    public float moveZ;
-   
-    public CameraController playerCamera;
-    public CameraController dogCamera;
-    public float rotSpeed = 600f;
+
+    [SerializeField] float speed = 3f;
+    [SerializeField] float moveX;
+    [SerializeField] float moveZ;
+
+    [SerializeField] CameraController playerCamera;
+    [SerializeField] CameraController dogCamera;
+    [SerializeField] float rotSpeed = 600f;
     Quaternion requiredRotation;
 
-    public Animator dogAnimator;
-    public Animator playerAnimator;
+    [SerializeField] Animator dogAnimator;
+    [SerializeField] Animator playerAnimator;
 
     //grounded
     bool isGrounded;
-    public Transform groundCheck;
-    public float groundDistance;
-    public LayerMask groundMask;
-    Vector3 velocity;
-    //float gravity = -9.8f ;
-    public float movementAmout;
+    [SerializeField] Transform groundCheck;
+    [SerializeField] float groundDistance;
+    [SerializeField] LayerMask groundMask;
+   
+    [SerializeField] float movementAmout;
     Vector3 movementDirection;
+    Vector3 velocity;
 
-    public bool isWatchdogActivated;
+    [SerializeField] internal bool isWatchdogActivated;
     public enum characterType
     {
         Player,
@@ -44,14 +44,8 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         playerMovement();
-
-
         CharacterMovementAnimation();
-
-
     }
 
     public void playerMovement()
@@ -85,14 +79,12 @@ public class CharacterMovement : MonoBehaviour
         {
             movementDirection = dogCamera.flatRoation * movementInput;
         }
-       
 
         if (movementAmout > 0)
         {
             this.transform.position += movementDirection * speed * Time.deltaTime;
             requiredRotation = Quaternion.LookRotation(movementDirection);
         }
-
         this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, requiredRotation, rotSpeed * Time.deltaTime); // for the smooth roation
     }
     public void CharacterMovementAnimation()
@@ -106,5 +98,4 @@ public class CharacterMovement : MonoBehaviour
             dogAnimator.SetFloat("DOGMOVEVALUE", movementAmout);
         }
     }
-
 }

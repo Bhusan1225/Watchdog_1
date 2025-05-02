@@ -4,21 +4,14 @@ using UnityEngine;
 
 public class OverLapSphereInteractor : MonoBehaviour
 {
-    public float scanRange;
-    // Start is called before the first frame update
-    public Collider[] hits;
-    public HackableObject hackableObject = null;
-    void Start()
-    {
 
-    }
+    [SerializeField] float scanRange;
+    [SerializeField] Collider[] hits;
+    [SerializeField] HackableObject hackableObject = null;
 
     // Update is called once per frame
-    void Update()
-    {
-        checkRange();
-    }
-
+    void Update() => checkRange();
+ 
     void checkRange()
     {
         //isNearToDevice = Physics.CheckSphere(nurolinkPrefab.transform.position, nuroLinkRange, hackableMask);
@@ -29,7 +22,7 @@ public class OverLapSphereInteractor : MonoBehaviour
             if (hit.GetComponent<HackableObject>())
             {
                 //Debug.Log("Found the hackable device: " + hit.gameObject.name);
-                // Do something with the specific object
+                //Do something with the specific object
 
                 hackableObject = hit.gameObject.GetComponent<HackableObject>();
                 if (Input.GetKeyDown(KeyCode.H))
@@ -41,15 +34,11 @@ public class OverLapSphereInteractor : MonoBehaviour
         }
     }
 
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-
-
         // Draw CheckSphere at the position of the spawned enemy
         Gizmos.DrawWireSphere(transform.position, scanRange);
-
 
     }
 }
