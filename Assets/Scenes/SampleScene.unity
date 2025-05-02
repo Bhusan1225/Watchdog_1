@@ -2694,7 +2694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 326000222}
   m_Layer: 0
-  m_Name: '---------------------------------- '
+  m_Name: ---------------------------------- UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4353,37 +4353,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590889133}
   m_CullTransparentMesh: 1
---- !u!1 &599796474
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 599796475}
-  m_Layer: 0
-  m_Name: '---------------------------------- '
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &599796475
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599796474}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.04555, y: -0.42517734, z: 7.3220496}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &643703784
 GameObject:
   m_ObjectHideFlags: 0
@@ -5262,7 +5231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 836448561}
   m_Layer: 0
-  m_Name: '---------------------------------- '
+  m_Name: ---------------------------------- Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9982,7 +9951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1609988259}
   m_Layer: 0
-  m_Name: ----------------------------------
+  m_Name: '----------------------------------Environment '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13852,7 +13821,9 @@ MonoBehaviour:
   cryptoText: {fileID: 1606101514}
   codeHolder: {fileID: 1973295871}
   codes: []
+  CODES: []
   popupAnimator: {fileID: 4508117166352117433}
+  isCryptoAdded: 0
 --- !u!1 &928777780580189906
 GameObject:
   m_ObjectHideFlags: 0
@@ -25046,4 +25017,3 @@ SceneRoots:
   - {fileID: 3046595689890721135}
   - {fileID: 3046595688658931141}
   - {fileID: 2846863000602071592}
-  - {fileID: 599796475}
