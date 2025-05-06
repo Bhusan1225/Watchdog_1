@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,13 @@ public class PlayerRayInteractor : MonoBehaviour
 
     void Update()
     {
+
+        RayInteractor();
+       
+    }
+
+    private void RayInteractor()
+    {
         Vector3 screenCenter = new Vector3(0.5f, 0.5f, 0f);
         Ray ray = theCamera.ViewportPointToRay(screenCenter);
 
@@ -35,7 +43,7 @@ public class PlayerRayInteractor : MonoBehaviour
             {
                 hackableObject = hitObject.GetComponent<HackableObject>();
                 hackableObject.GetComponent<Outline>().enabled = true;
-                if(Input.GetKeyDown(KeyCode.H))
+                if (Input.GetKeyDown(KeyCode.H))
                 {
                     hackableObject.Hack();
                 }

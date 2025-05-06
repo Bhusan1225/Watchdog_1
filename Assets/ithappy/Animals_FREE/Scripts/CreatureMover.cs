@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Controller
 {
-    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(UnityEngine.CharacterController))]
     [RequireComponent(typeof(Animator))]
     [DisallowMultipleComponent]
     public class CreatureMover : MonoBehaviour
@@ -30,7 +30,7 @@ namespace Controller
         private LookWeight m_LookWeight = new(1f, 0.3f, 0.7f, 1f);
 
         private Transform m_Transform;
-        private CharacterController m_Controller;
+        private UnityEngine.CharacterController m_Controller;
         private Animator m_Animator;
 
         private MovementHandler m_Movement;
@@ -57,7 +57,7 @@ namespace Controller
         private void Awake()
         {
             m_Transform = transform;
-            m_Controller = GetComponent<CharacterController>();
+            m_Controller = GetComponent<UnityEngine.CharacterController>();
             m_Animator = GetComponent<Animator>();
 
             m_Movement = new MovementHandler(m_Controller, m_Transform, m_WalkSpeed, m_RunSpeed, m_RotateSpeed, m_JumpHeight, m_Space);
@@ -121,7 +121,7 @@ namespace Controller
         #region Handlers
         private class MovementHandler
         {
-            private readonly CharacterController m_Controller;
+            private readonly UnityEngine.CharacterController m_Controller;
             private readonly Transform m_Transform;
 
             private float m_WalkSpeed;
@@ -141,7 +141,7 @@ namespace Controller
             private float m_jumpTimer;
             private Vector3 m_LastForward;
 
-            public MovementHandler(CharacterController controller, Transform transform, float walkSpeed, float runSpeed, float rotateSpeed, float jumpHeight, Space space)
+            public MovementHandler(UnityEngine.CharacterController controller, Transform transform, float walkSpeed, float runSpeed, float rotateSpeed, float jumpHeight, Space space)
             {
                 m_Controller = controller;
                 m_Transform = transform;
