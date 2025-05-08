@@ -15,6 +15,9 @@ public class GameService :GenericMonoSingleton<GameService>
     private HackingUIService hackingUIService;
     public HackingUIService HackingUIService => hackingUIService;//connecting... HackingUIService
 
+    [SerializeField]
+    private UIService uiService;
+    public UIService UIService => uiService;
 
 
     //Sound Referneces:

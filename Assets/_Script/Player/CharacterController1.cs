@@ -43,7 +43,7 @@ public class CharacterController1 : MonoBehaviour
     {
         handleMovement();
         view.UpdateAnimation(Character, model.MovementAmount);
-        
+        handleCameraView();
     }
 
     void handleMovement()
@@ -87,5 +87,18 @@ public class CharacterController1 : MonoBehaviour
     {
         GameService.Instance.interactionService.RayInteractor(dogsCamera);   // press H
         
+    }
+
+    void handleCameraView()
+    {
+        if (Character == CharacterType.Player && Input.GetKeyDown(KeyCode.C))
+        {
+            GameService.Instance.UIService.ActivateCamaraViewUI();
+        }
+        else if (Character == CharacterType.Player && Input.GetKeyDown(KeyCode.V))
+        {
+            GameService.Instance.UIService.DeactivateCamaraViewUI();
+        }
+
     }
 }

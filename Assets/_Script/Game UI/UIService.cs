@@ -4,9 +4,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class UIService : MonoBehaviour
 {
-    public static UIManager Instance;
+ 
     [SerializeField] GameObject cameraViewUI;
     [SerializeField] GameObject dotPanel;
 
@@ -16,25 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] internal Button thirdPersonViewButton;
 
 
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-           
-        }
-        else
-        {
-            Destroy(gameObject);  
-        }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        cameraViewUI.SetActive(false);
-        dotPanel.SetActive(false);
-       
-    }
+     
     private void OnEnable()
     {
         firstPersonViewButton.onClick.AddListener(firstPersonViewButtonClicked);
@@ -47,20 +29,17 @@ public class UIManager : MonoBehaviour
         thirdPersonViewButton.onClick.RemoveListener(thirdPersonViewButtonClicked);
     }
 
-    // Update is called once per frame
-    void Update()
+   
+    public void ActivateCamaraViewUI()
     {
-        if( Input.GetKeyDown(KeyCode.C))
-        {
-            cameraViewUI.SetActive(true);
-            GameService.Instance.SoundService.PlaySoundEffects(SoundType.UIPopup);
+        cameraViewUI.SetActive(true);
+        GameService.Instance.SoundService.PlaySoundEffects(SoundType.UIPopup);
+    }
 
-        }
-        if ( Input.GetKeyDown(KeyCode.V))
-        {
-            cameraViewUI.SetActive(false);
-        }
-
+    public void DeactivateCamaraViewUI()
+    {
+        cameraViewUI.SetActive(false);
+        GameService.Instance.SoundService.PlaySoundEffects(SoundType.UIPopup);
     }
 
     void firstPersonViewButtonClicked()

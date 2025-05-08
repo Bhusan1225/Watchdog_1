@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class HackingUIService : MonoBehaviour
 {
-    
 
     [Header("Panels")]
     [SerializeField] GameObject hackPromptPanel;
@@ -53,12 +52,14 @@ public class HackingUIService : MonoBehaviour
         currentObject = obj;
         hackPromptPanel.SetActive(true);
         
-        yesButton.onClick.AddListener(OnConfirmHack);
-        noButton.onClick.AddListener(OnDeclineHack);
-
         // Clear listeners to avoid stacking
         yesButton.onClick.RemoveAllListeners();
         noButton.onClick.RemoveAllListeners();
+
+        yesButton.onClick.AddListener(OnConfirmHack);
+        noButton.onClick.AddListener(OnDeclineHack);
+
+        
        
         
     }
