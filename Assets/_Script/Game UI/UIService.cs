@@ -10,13 +10,13 @@ public class UIService : MonoBehaviour
     [SerializeField] GameObject cameraViewUI;
     [SerializeField] GameObject dotPanel;
 
+    [SerializeField] GameObject codeUI;
+
     [SerializeField] internal CameraController theCamera;
 
     [SerializeField] internal Button firstPersonViewButton;
     [SerializeField] internal Button thirdPersonViewButton;
 
-
-     
     private void OnEnable()
     {
         firstPersonViewButton.onClick.AddListener(firstPersonViewButtonClicked);
@@ -29,19 +29,15 @@ public class UIService : MonoBehaviour
         thirdPersonViewButton.onClick.RemoveListener(thirdPersonViewButtonClicked);
     }
 
-   
-    public void ActivateCamaraViewUI()
+   /// <summary>
+   /// Camera view
+   /// </summary>
+    public void ActivateCamaraViewUI(bool isAcivated)
     {
-        cameraViewUI.SetActive(true);
+        cameraViewUI.SetActive(isAcivated);
         GameService.Instance.SoundService.PlaySoundEffects(SoundType.UIPopup);
     }
-
-    public void DeactivateCamaraViewUI()
-    {
-        cameraViewUI.SetActive(false);
-        GameService.Instance.SoundService.PlaySoundEffects(SoundType.UIPopup);
-    }
-
+ 
     void firstPersonViewButtonClicked()
     {
         theCamera.isThirdPersonActive = false;
@@ -56,5 +52,15 @@ public class UIService : MonoBehaviour
         dotPanel.SetActive(false);
         GameService.Instance.SoundService.PlaySoundEffects(SoundType.ButtonClick);
     }
+    /// <summary>
+    /// Computer cheatCode
+    /// </summary>
+    
+    public void ShowCheatCode(bool showCode)
+    {
+        codeUI.SetActive(showCode);
+        GameService.Instance.SoundService.PlaySoundEffects(SoundType.GadgetInternalSound);
+    }
+
 
 }

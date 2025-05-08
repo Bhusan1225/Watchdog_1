@@ -93,12 +93,28 @@ public class CharacterController1 : MonoBehaviour
     {
         if (Character == CharacterType.Player && Input.GetKeyDown(KeyCode.C))
         {
-            GameService.Instance.UIService.ActivateCamaraViewUI();
+            GameService.Instance.UIService.ActivateCamaraViewUI(true);
         }
         else if (Character == CharacterType.Player && Input.GetKeyDown(KeyCode.V))
         {
-            GameService.Instance.UIService.DeactivateCamaraViewUI();
+            GameService.Instance.UIService.ActivateCamaraViewUI(false);
         }
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<ComputerHackable>() != null)
+        {
+            GameService.Instance.UIService.ShowCheatCode(true);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<ComputerHackable>() != null)
+        {
+            GameService.Instance.UIService.ShowCheatCode(false);
+        }
     }
 }
