@@ -3,8 +3,11 @@
     public enum SoundType
     {
         BackgroundMusic,
-        BloonPop,
-        WaveComplete,
-        SpawnMonkey,
-        MonkeyShoot
-    }
+        ButtonClick,
+        GadgetPopup,
+        GadgetInternalSound,
+        TrafficLightSound,
+        UIPopup,
+        BombBlast,
+        MessagePopup
+}

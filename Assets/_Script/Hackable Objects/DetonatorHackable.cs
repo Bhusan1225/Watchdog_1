@@ -20,6 +20,7 @@ public class DetonatorHackable : HackableObject
     public override void Action1() 
     {
         Debug.Log("detonator- BOOM-BOOM-BOOM-BOOM");
+        GameService.Instance.SoundService.PlaySoundEffects(SoundType.BombBlast);
         BlastParticleEffect();
         DetonatorBlastEffect();
     }

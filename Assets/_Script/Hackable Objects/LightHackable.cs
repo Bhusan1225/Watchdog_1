@@ -23,45 +23,87 @@ public class LightHackable : HackableObject
         GameService.Instance.HackingUIService.optionPanelTypeB.SetActive(true);
     }
 
+    //public override void Action1()
+    //{
+    //    GameService.Instance.SoundService.PlaySoundEffects(SoundType.TrafficLightSound);
+    //    isRed = true;
+    //    isYellow = false;
+    //    isGreen = false;
+    //    if (isRed && redLightRender != null && yelloLightRender != null && greenLightRender != null)
+    //    {
+    //        redLightRender.material.color = Color.red;
+    //        yelloLightRender.material.color = Color.gray;
+    //        greenLightRender.material.color = Color.gray;
+    //    }
+    //}
+
+    //public override void Action2()
+    //{
+    //    GameService.Instance.SoundService.PlaySoundEffects(SoundType.TrafficLightSound);
+    //    isRed = false;
+    //    isYellow = true;
+    //    isGreen = false;
+
+    //    if (isYellow && redLightRender != null && yelloLightRender != null && greenLightRender != null)
+    //    {
+
+    //        redLightRender.material.color = Color.gray;
+    //        yelloLightRender.material.color = Color.yellow;
+    //        greenLightRender.material.color = Color.gray;
+    //    }
+
+    //}
+    //public override void Action3()
+    //{
+    //    GameService.Instance.SoundService.PlaySoundEffects(SoundType.TrafficLightSound);
+    //    isRed = false;
+    //    isYellow = false;
+    //    isGreen = true;
+
+    //    if (isGreen && redLightRender != null && yelloLightRender != null && greenLightRender != null)
+    //    {
+    //        redLightRender.material.color = Color.gray;
+    //        yelloLightRender.material.color = Color.gray;
+    //        greenLightRender.material.color = Color.green;
+    //    }
+    //}
+
+    public enum TrafficLightState
+    {
+        Red,
+        Yellow,
+        Green
+    }
+
+    public void SetTrafficLightState(TrafficLightState state)
+    {
+        GameService.Instance.SoundService.PlaySoundEffects(SoundType.TrafficLightSound);
+
+        isRed = (state == TrafficLightState.Red);
+        isYellow = (state == TrafficLightState.Yellow);
+        isGreen = (state == TrafficLightState.Green);
+
+        if (redLightRender != null && yelloLightRender != null && greenLightRender != null)
+        {
+            redLightRender.material.color = isRed ? Color.red : Color.gray;
+            yelloLightRender.material.color = isYellow ? Color.yellow : Color.gray;
+            greenLightRender.material.color = isGreen ? Color.green : Color.gray;
+        }
+    }
+
+
     public override void Action1()
     {
-        isRed = true;
-        isYellow = false;
-        isGreen = false;
-        if (isRed && redLightRender != null && yelloLightRender != null && greenLightRender != null)
-        {
-            redLightRender.material.color = Color.red;
-            yelloLightRender.material.color = Color.gray;
-            greenLightRender.material.color = Color.gray;
-        }
+        SetTrafficLightState(TrafficLightState.Red);
     }
 
     public override void Action2()
     {
-        isRed = false;
-        isYellow = true;
-        isGreen = false;
-
-        if (isYellow && redLightRender != null && yelloLightRender != null && greenLightRender != null)
-        {
-
-            redLightRender.material.color = Color.gray;
-            yelloLightRender.material.color = Color.yellow;
-            greenLightRender.material.color = Color.gray;
-        }
-
+        SetTrafficLightState(TrafficLightState.Yellow);
     }
+
     public override void Action3()
     {
-        isRed = false;
-        isYellow = false;
-        isGreen = true;
-
-        if (isGreen && redLightRender != null && yelloLightRender != null && greenLightRender != null)
-        {
-            redLightRender.material.color = Color.gray;
-            yelloLightRender.material.color = Color.gray;
-            greenLightRender.material.color = Color.green;
-        }
+        SetTrafficLightState(TrafficLightState.Green);
     }
 }

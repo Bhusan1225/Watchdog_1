@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HackingUIService : MonoBehaviour
 {
-    //public static HackingUIService Instance;
+    
 
     [Header("Panels")]
     [SerializeField] GameObject hackPromptPanel;
@@ -45,35 +45,29 @@ public class HackingUIService : MonoBehaviour
     [Header("Hacked Object")]
     public HackableObject currentObject;
 
-    //private void Awake()
-    //{
-    //    if (Instance == null)
-    //    {
-    //        Instance = this;
-    //    }
-    //    else
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
-
+  
     // Show "Do you want to hack?" popup
     public void ShowHackPrompt(HackableObject obj)
     {
+        GameService.Instance.SoundService.PlaySoundEffects(SoundType.GadgetPopup);
         currentObject = obj;
         hackPromptPanel.SetActive(true);
+        
+        yesButton.onClick.AddListener(OnConfirmHack);
+        noButton.onClick.AddListener(OnDeclineHack);
 
         // Clear listeners to avoid stacking
         yesButton.onClick.RemoveAllListeners();
         noButton.onClick.RemoveAllListeners();
        
-        yesButton.onClick.AddListener(OnConfirmHack);
-        noButton.onClick.AddListener(OnDeclineHack);
+        
     }
 
 
     public void OnConfirmHack()
     {
+        GameService.Instance.SoundService.PlaySoundEffects(SoundType.ButtonClick);
+        GameService.Instance.SoundService.PlaySoundEffects(SoundType.GadgetInternalSound);
         hackPromptPanel.SetActive(false);
         currentObject.ShowHackOptions();
 
@@ -89,9 +83,11 @@ public class HackingUIService : MonoBehaviour
         closeButtonDet.onClick.AddListener(CloseAction);
         if (inputTextFieldDetonator.text == DetonatorpcorrectCode)
         {
+            GameService.Instance.SoundService.PlaySoundEffects(SoundType.ButtonClick);
             blastButton.onClick.RemoveAllListeners();
             blastButton.onClick.AddListener(Action1);
-            
+           
+
         }
         else
         {
@@ -104,6 +100,7 @@ public class HackingUIService : MonoBehaviour
         closeButtonlit.onClick.AddListener(CloseAction);
         if (inputTextFieldLight.text == lightpcorrectCode)
         {
+            GameService.Instance.SoundService.PlaySoundEffects(SoundType.ButtonClick);
             redButton.onClick.RemoveAllListeners();
             yellowButton.onClick.RemoveAllListeners();
             greenButton.onClick.RemoveAllListeners();
@@ -126,6 +123,7 @@ public class HackingUIService : MonoBehaviour
 
         if (inputTextFieldComp.text == ComputercorrectCode)
         {
+            GameService.Instance.SoundService.PlaySoundEffects(SoundType.ButtonClick);
             Debug.Log(" buttons are working");
             cryptoButton.onClick.RemoveAllListeners();
             codeButton.onClick.RemoveAllListeners();
@@ -166,6 +164,7 @@ public class HackingUIService : MonoBehaviour
 
     public void OnDeclineHack()
     {
+        GameService.Instance.SoundService.PlaySoundEffects(SoundType.ButtonClick);
         hackPromptPanel.SetActive(false);
     }
 

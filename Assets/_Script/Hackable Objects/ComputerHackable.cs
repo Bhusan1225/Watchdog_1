@@ -39,8 +39,12 @@ public class ComputerHackable : HackableObject
             CODES.Add(codeHolder.transform.GetChild(i).gameObject);
         }
     }
-  
-    public override void Action1() => AddCrypto();
+
+    public override void Action1() 
+    { 
+        AddCrypto();
+        GameService.Instance.SoundService.PlaySoundEffects(SoundType.MessagePopup); 
+    }
  
     public void AddCrypto()
     {

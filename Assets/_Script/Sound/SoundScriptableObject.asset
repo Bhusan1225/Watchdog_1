@@ -12,4 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a284501f584ef9740be21da7b79c63cd, type: 3}
   m_Name: SoundScriptableObject
   m_EditorClassIdentifier: 
-  audioList: []
+  audioList:
+  - soundType: 0
+    audio: {fileID: 8300000, guid: 49b79eaa0bb115a47a51109025e0ce72, type: 3}
+  - soundType: 1
+    audio: {fileID: 8300000, guid: 2efdaf75a342ffd43afe3d3ebd36ebb8, type: 3}
+  - soundType: 2
+    audio: {fileID: 8300000, guid: f6d29dca09ea93b468f5105f22071fd4, type: 3}
+  - soundType: 3
+    audio: {fileID: 8300000, guid: 4c6672d191fd1e84db29db19b4f65e7b, type: 3}
+  - soundType: 5
+    audio: {fileID: 8300000, guid: f7a3d8dd0fb9f1343bc61ec82d20cab9, type: 3}
+  - soundType: 4
+    audio: {fileID: 8300000, guid: faebd33d87965654eb8c7d6bb13d9422, type: 3}
+  - soundType: 3
+    audio: {fileID: 8300000, guid: ee6f0bdea1dc06d4892d1caa50238cc8, type: 3}
