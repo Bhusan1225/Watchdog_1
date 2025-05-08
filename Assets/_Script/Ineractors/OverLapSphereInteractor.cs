@@ -10,7 +10,7 @@ public class OverLapSphereInteractor : MonoBehaviour
     [SerializeField] HackableObject hackableObject = null;
 
     // Update is called once per frame
-    void Update() => checkRange();
+    void Update() { checkRange(); }
  
     void checkRange()
     {
@@ -33,6 +33,20 @@ public class OverLapSphereInteractor : MonoBehaviour
             }
         }
     }
+
+
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    if (collision.gameObject.GetComponent<HackableObject>() != null)
+    //    {
+    //        Debug.Log("Player collided with a hackable object");
+    //        checkRange();
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("There is no hackable object");
+    //    }
+    //}
 
     private void OnDrawGizmos()
     {

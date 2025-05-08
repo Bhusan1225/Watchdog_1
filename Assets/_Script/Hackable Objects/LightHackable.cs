@@ -15,12 +15,12 @@ public class LightHackable : HackableObject
 
     private void Start() => isRed = true;
 
-    public override void CloseAction() => HackingUIManager.Instance.optionPanelTypeB.SetActive(false);
+    public override void CloseAction() => GameService.Instance.HackingUIService.optionPanelTypeB.SetActive(false);
 
     public override void ShowHackOptions()
     {
-        HackingUIManager.Instance.HideAllHackOptionPanels();
-        HackingUIManager.Instance.optionPanelTypeB.SetActive(true);
+        GameService.Instance.HackingUIService.HideAllHackOptionPanels();
+        GameService.Instance.HackingUIService.optionPanelTypeB.SetActive(true);
     }
 
     public override void Action1()

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CompanionLocomotion : MonoBehaviour
 {
-    [SerializeField] CharacterMovement playerMovement;
-    [SerializeField] CharacterMovement dogMovement;
+    [SerializeField] CharacterController1 playerMovement;
+    [SerializeField] CharacterController1 dogMovement;
     [SerializeField] ChaseAI dogchase;
 
     [SerializeField] GameObject playerCamera;
     [SerializeField] GameObject dogCamera;
-
+   
 
 
     // Start is called before the first frame update
@@ -29,8 +29,9 @@ public class CompanionLocomotion : MonoBehaviour
             playerCamera.SetActive(false);
             playerMovement.enabled = false;
             dogchase.enabled = false;
-            
-            dogMovement.isWatchdogActivated = true;
+
+            playerMovement.model.IsWatchdogActivated = true;
+            dogMovement.model.IsWatchdogActivated = true;
 
             dogCamera.SetActive(true);
 
@@ -40,7 +41,8 @@ public class CompanionLocomotion : MonoBehaviour
             playerCamera.SetActive(true);
             playerMovement.enabled = true;
             dogchase.enabled = true;
-            dogMovement.isWatchdogActivated = false;
+            playerMovement.model.IsWatchdogActivated = false;
+            dogMovement.model.IsWatchdogActivated = false;
 
             dogCamera.SetActive(false);
 

@@ -9,20 +9,23 @@ public class GameService :GenericMonoSingleton<GameService>
     //property
     public IntractorService interactionService { get; private set; }//connecting... InteractorService
 
-    [Header("Intractor")]
-    [Header("Ray Intractor")]
-    [SerializeField] Camera playerCamera;
-    [SerializeField] HackableObject hackableObject = null;
-    
-    [Header("Sphere Intractor")]
-    private float scanRange;
-    private Collider[] hits;
-    private Transform playerTransform;
+    public SoundService SoundService { get; private set; }//connecting... SoundService
 
+    [SerializeField]
+    private HackingUIService hackingUIService;
+    public HackingUIService HackingUIService => hackingUIService;//connecting... HackingUIService
+
+
+
+    //Sound Referneces:
+    [SerializeField] private SoundScriptableObject soundScriptableObject;
+    [SerializeField] private AudioSource SFXSource;
+    [SerializeField] private AudioSource BGSource;
     // Start is called before the first frame update
     void Start()
     {
-        interactionService = new IntractorService(playerCamera,hackableObject, scanRange, hits, playerTransform);
+        interactionService = new IntractorService();
+        SoundService = new SoundService(soundScriptableObject, SFXSource, BGSource);
     }
 
     // Update is called once per frame

@@ -3,9 +3,9 @@ using TMPro;
 using UnityEngine.UI;
 
 
-public class HackingUIManager : MonoBehaviour
+public class HackingUIService : MonoBehaviour
 {
-    public static HackingUIManager Instance;
+    //public static HackingUIService Instance;
 
     [Header("Panels")]
     [SerializeField] GameObject hackPromptPanel;
@@ -45,17 +45,17 @@ public class HackingUIManager : MonoBehaviour
     [Header("Hacked Object")]
     public HackableObject currentObject;
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    //private void Awake()
+    //{
+    //    if (Instance == null)
+    //    {
+    //        Instance = this;
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 
     // Show "Do you want to hack?" popup
     public void ShowHackPrompt(HackableObject obj)
@@ -86,21 +86,22 @@ public class HackingUIManager : MonoBehaviour
 
     void ActiveDetonatorButtons()
     {
+        closeButtonDet.onClick.AddListener(CloseAction);
         if (inputTextFieldDetonator.text == DetonatorpcorrectCode)
         {
             blastButton.onClick.RemoveAllListeners();
             blastButton.onClick.AddListener(Action1);
-            closeButtonDet.onClick.AddListener(CloseAction);
+            
         }
         else
         {
             Debug.Log("Detonate is not working");
-
         }
     }
 
     void ActiveTrafficButtons()
     {
+        closeButtonlit.onClick.AddListener(CloseAction);
         if (inputTextFieldLight.text == lightpcorrectCode)
         {
             redButton.onClick.RemoveAllListeners();
@@ -110,7 +111,7 @@ public class HackingUIManager : MonoBehaviour
             redButton.onClick.AddListener(Action1);
             yellowButton.onClick.AddListener(Action2);
             greenButton.onClick.AddListener(Action3);
-            closeButtonlit.onClick.AddListener(CloseAction);
+            
         }
         else
         {
@@ -121,7 +122,8 @@ public class HackingUIManager : MonoBehaviour
 
     void ActiveComputerButtons()
     {
-        
+        closeButtonPC.onClick.AddListener(CloseAction);
+
         if (inputTextFieldComp.text == ComputercorrectCode)
         {
             Debug.Log(" buttons are working");
@@ -130,7 +132,7 @@ public class HackingUIManager : MonoBehaviour
 
             cryptoButton.onClick.AddListener(Action1);
             codeButton.onClick.AddListener(Action2);
-            closeButtonPC.onClick.AddListener(CloseAction);
+            
 
         }
         else
@@ -158,6 +160,7 @@ public class HackingUIManager : MonoBehaviour
 
     public void CloseAction()
     {
+        Debug.Log(" Close buttons are working");
         currentObject.CloseAction();
     }
 

@@ -11,11 +11,11 @@ public class DetonatorHackable : HackableObject
     private ParticleSystem blastParticleInstance;
     public override void ShowHackOptions()
     {
-        HackingUIManager.Instance.HideAllHackOptionPanels();
-        HackingUIManager.Instance.detonatorUIPanel.SetActive(true);
+        GameService.Instance.HackingUIService.HideAllHackOptionPanels();
+        GameService.Instance.HackingUIService.detonatorUIPanel.SetActive(true);
     }
 
-    public override void CloseAction() => HackingUIManager.Instance.detonatorUIPanel.SetActive(false);
+    public override void CloseAction() => GameService.Instance.HackingUIService.detonatorUIPanel.SetActive(false);
    
     public override void Action1() 
     {

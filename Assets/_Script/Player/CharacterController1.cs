@@ -1,11 +1,18 @@
+using Controller;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour
+public class CharacterController1 : MonoBehaviour
 {
+    
+    public enum CharacterType { Player, Dog }
+    
+    [Header("CharacterType")]
+    public CharacterType Character;
+
     [Header("Movement")]
     [SerializeField] float rotSpeed = 600f;
     [SerializeField] Transform groundCheck;
@@ -13,15 +20,18 @@ public class CharacterController : MonoBehaviour
     [SerializeField] LayerMask groundMask;
 
     [Header("Cameras")]
-    [SerializeField] CameraController playerCamera;
-    [SerializeField] CameraController dogCamera;
+    [SerializeField] CameraController playerCameraController;
+    [SerializeField] CameraController dogCameraController;
+    Camera dogsCamera;
 
     [Header("Animators")]
     [SerializeField] Animator playerAnimator;
     [SerializeField] Animator dogAnimator;
 
-    CharacterModel model;
-    CharacterView view;
+    
+
+    public CharacterModel model;
+    public CharacterView view;
 
     private void Start()
     {
@@ -31,11 +41,12 @@ public class CharacterController : MonoBehaviour
 
     private void Update()
     {
-        HandleMovement();
-        view.UpdateAnimation(model.Character, model.MovementAmount);
+        handleMovement();
+        view.UpdateAnimation(Character, model.MovementAmount);
+        
     }
 
-    void HandleMovement()
+    void handleMovement()
     {
         // Ground Check
         model.IsGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -49,7 +60,18 @@ public class CharacterController : MonoBehaviour
         var movementInput = new Vector3(model.MoveX, 0, model.MoveZ).normalized;
 
         // Direction
-        model.MovementDirection = model.IsWatchdogActivated ? dogCamera.flatRoation * movementInput : playerCamera.flatRoation * movementInput;
+        //model.MovementDirection = model.IsWatchdogActivated ? dogCameraController.flatRoation * movementInput : playerCameraController.flatRoation * movementInput;
+
+
+        // Direction
+        if (!model.IsWatchdogActivated)
+        {
+            model.MovementDirection = playerCameraController.flatRoation * movementInput;
+        }
+        else
+        {
+            model.MovementDirection = dogCameraController.flatRoation * movementInput;
+        }
 
         if (model.MovementAmount > 0)
         {
@@ -59,5 +81,11 @@ public class CharacterController : MonoBehaviour
 
         // Rotation
         transform.rotation = Quaternion.RotateTowards(transform.rotation, model.RequiredRotation, rotSpeed * Time.deltaTime);
+    }
+
+    void handleInteraction()
+    {
+        GameService.Instance.interactionService.RayInteractor(dogsCamera);   // press H
+        
     }
 }

@@ -20,10 +20,10 @@ public class ComputerHackable : HackableObject
 
     public override void ShowHackOptions()
     {
-        HackingUIManager.Instance.HideAllHackOptionPanels();
-        HackingUIManager.Instance.optionPanelTypeC.SetActive(true);
+        GameService.Instance.HackingUIService.HideAllHackOptionPanels();
+        GameService.Instance.HackingUIService.optionPanelTypeC.SetActive(true);
     }
-    public override void CloseAction() => HackingUIManager.Instance.optionPanelTypeC.SetActive(false);
+    public override void CloseAction() => GameService.Instance.HackingUIService.optionPanelTypeC.SetActive(false);
     private void Start()
     {
         cryptoText.text = "Crypto: " + crypto.ToString();

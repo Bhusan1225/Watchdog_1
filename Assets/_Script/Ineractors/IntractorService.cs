@@ -12,24 +12,20 @@ public class IntractorService
 
 
     private HackableObject hackableObject = null;
-    public IntractorService(Camera _playerCamera, HackableObject _hackableObject, float _scanRange, Collider[] _hits, Transform _playerTransform)
+    public IntractorService()
     {
-        this.playerCamera = _playerCamera;
-        this.hackableObject = _hackableObject;
-        this.hits = _hits;
-        this.scanRange = _scanRange;
-        this.playerTransform = _playerTransform;
+             
     }
 
 
     // Update is called once per frame
     public void Update()
     {
-        RayInteractor();
-        CheckRange();
+       // RayInteractor(playerCamera);
+        //SphereInteractor(playerTransform, hits, hackableObject, scanRange);
     }
 
-    public void RayInteractor()
+    public void RayInteractor(Camera _playerCamera)
     {
         Vector3 screenCenter = new Vector3(0.5f, 0.5f, 0f);
         Ray ray = playerCamera.ViewportPointToRay(screenCenter);
@@ -59,9 +55,9 @@ public class IntractorService
     }
 
 
-    public void CheckRange()
+    public void SphereInteractor(Transform playerTransform, Collider[] hits, HackableObject hackableObject, float scanRange)
     {
-        //isNearToDevice = Physics.CheckSphere(nurolinkPrefab.transform.position, nuroLinkRange, hackableMask);
+        
         hits = Physics.OverlapSphere(playerTransform.position, scanRange);
 
         foreach (Collider hit in hits)

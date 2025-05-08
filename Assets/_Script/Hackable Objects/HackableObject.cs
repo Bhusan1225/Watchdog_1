@@ -7,7 +7,7 @@ public abstract class HackableObject : MonoBehaviour
     public void Hack()
     {
         // Ask UI Manager to show confirmation
-        HackingUIManager.Instance.ShowHackPrompt(this);
+        GameService.Instance.HackingUIService.ShowHackPrompt(this);
     }
 
     // This will be implemented by child classes to show specific options

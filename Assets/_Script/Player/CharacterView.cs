@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterView
+public class CharacterView 
 {
    
     private Animator playerAnimator;
@@ -14,13 +14,13 @@ public class CharacterView
         dogAnimator = dogAnim;
     }
 
-    public void UpdateAnimation(CharacterModel.CharacterType type, float movementAmount)
+    public void UpdateAnimation(CharacterController1.CharacterType type, float movementAmount)
     {
-        if (type == CharacterModel.CharacterType.Player)
+        if (type == CharacterController1.CharacterType.Player)
         {
             playerAnimator?.SetFloat("MOVEVALUE", movementAmount);
         }
-        else if (type == CharacterModel.CharacterType.Dog)
+        else if (type == CharacterController1.CharacterType.Dog)
         {
             dogAnimator?.SetFloat("DOGMOVEVALUE", movementAmount);
         }

@@ -32,7 +32,12 @@ public class UIManager : MonoBehaviour
     {
         cameraViewUI.SetActive(false);
         dotPanel.SetActive(false);
-
+       
+    }
+    private void OnEnable()
+    {
+        firstPersonViewButton.onClick.AddListener(firstPersonViewButtonClicked);
+        thirdPersonViewButton.onClick.AddListener(thirdPersonViewButtonClicked);
     }
 
     // Update is called once per frame
@@ -48,8 +53,7 @@ public class UIManager : MonoBehaviour
             cameraViewUI.SetActive(false);
         }
 
-        firstPersonViewButton.onClick.AddListener(firstPersonViewButtonClicked);
-        thirdPersonViewButton.onClick.AddListener(thirdPersonViewButtonClicked);
+        
 
     }
 

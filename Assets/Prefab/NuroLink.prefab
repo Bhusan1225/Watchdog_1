@@ -335,6 +335,7 @@ GameObject:
   - component: {fileID: 7049033139124099228}
   - component: {fileID: 4577646824911471993}
   - component: {fileID: 5958881401573586914}
+  - component: {fileID: 5095033767425950518}
   m_Layer: 0
   m_Name: NuroLink
   m_TagString: Untagged
@@ -385,8 +386,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.160134, z: 1}
-  m_Center: {x: 0, y: -0.8206023, z: 0}
+  m_Size: {x: 2.2138176, y: 2.4638908, z: 1.2664943}
+  m_Center: {x: 0.0749542, y: -1.4724807, z: 0.13324723}
 --- !u!54 &7049033139124099228
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -450,6 +451,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5095033767425950518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8544992154886772502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f7d830bf7427647a136d0bdd79e66a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scanRange: 2
+  hits: []
+  hackableObject: {fileID: 0}
 --- !u!1 &8624749280493347620
 GameObject:
   m_ObjectHideFlags: 0

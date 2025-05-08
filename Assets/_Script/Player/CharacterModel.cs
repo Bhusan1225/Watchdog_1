@@ -1,8 +1,11 @@
 using UnityEngine;
 
+
+
+
 public class CharacterModel
 {
-    public float Speed = 3f;
+    public float Speed = 12f;
     public float MoveX;
     public float MoveZ;
     public float MovementAmount;
@@ -11,8 +14,7 @@ public class CharacterModel
     public Vector3 MovementDirection;
     public Quaternion RequiredRotation;
 
-    public enum CharacterType { Player, Dog }
-    public CharacterType Character;
-    public bool IsWatchdogActivated = false;
+
+    public bool IsWatchdogActivated { get; set; } = false;
 
 }
